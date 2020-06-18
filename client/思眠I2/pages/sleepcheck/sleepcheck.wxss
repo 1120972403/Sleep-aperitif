@@ -1,0 +1,19 @@
+/* pages/sleepcheck/sleepcheck.wxss */
+.box{
+  margin: 10rpx;
+}
+.title{
+  margin: 40rpx 0;
+}
+
+.cu-btn{
+  background-color: white;
+  border: 1rpx solid #C3CCD1;
+  font-size: 30rpx;
+  margin: 20rpx 0;
+  padding: 10rpx;
+}
+.bg-green{
+  background-color:#76C2AF;
+  color: white;
+}

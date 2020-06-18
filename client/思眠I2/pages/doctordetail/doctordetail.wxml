@@ -1,0 +1,18 @@
+<!--pages/doctordetail/doctordetail.wxml-->
+<view>
+	<view class="head flex">
+		<image src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3252521864,872614242&fm=26&gp=0.jpg"></image>
+		<view class="ajc">张医生</view>
+		<view class="ajc" style="margin-left:300rpx">
+			<view class="zixun " catchtap="chat">立即咨询</view>
+		</view>
+
+	</view>
+	<view class="content">
+		<view class="des">
+			<view>医师描述:
+				毕业于兰州医学院医疗专业，本科学历，学士学位。从事骨科临床工作三十余年。擅长关节外科、脊柱外科、创伤显微外科疾病的诊治，在人工关节置换、颈腰惟间盘突出症手术、四肢骨关节复杂损伤处置上积累了丰富的经验。创建了武成市人民医院骨二科，先后任武威市人民医院副院长、市第二人民医院院长、武威肿瘤医院副院长，甘肃省中西医结合学会骨科微创专业委员会副主任委员，甘肃省医学会骨科专业委员会常委，甘肃省医师协会骨科医师分会常务委员，武威市医学会骨科专业和运动医学专业委员会副主任委员，甘肃省老年医学会常务理事，医养结合促进委员会常务委员，中国老年医学会北方慢病防治分会委员，国家级司法医学鉴定委员等。在国家级、省级医学期刊上发表论文十余篇，主编完成《骨科疾病诊疗常规》和《新时期医院精细化管理与改革创新指导全书》，主持完成多项市级科研成果，获得市级科技进步一、二等奖， 荣获“武威市第四届十大优秀青年知识分子”。
+			</view>
+		</view>
+	</view>
+</view>

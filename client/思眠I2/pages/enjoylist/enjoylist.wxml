@@ -1,0 +1,43 @@
+<!--pages/enjoylist/enjoylist.wxml-->
+<view class="ajc">
+	<block wx:for="{{tablist}}" wx:key>
+		<view class="tab {{index == tabindex?'tabselect':''}}" bindtap="changeTab" data-index="{{index}}">
+			{{item.name}}
+		</view>
+	</block>
+</view>
+
+<!-- 内容区域 -->
+<view class="recommend" wx:if="{{tabindex == 0}}">
+
+	<navigator wx:for="{{recommed}}" url="/pages/enjoy/enjoy?id={{item.id}}" wx:key>
+		<view class="content flex">
+			<view class="recommend-left ajc">
+				<image src="{{item.img}}"></image>
+			</view>
+			<view class="ajc">
+				<view class="recommend-right">
+					<view class="title">{{item.title}}</view>
+          	<view class="des">{{item.createTime}}</view>
+				</view>
+			</view>
+		</view>
+	</navigator>
+</view>
+
+<view class="recommend" wx:elif="{{tabindex == 1}}">
+
+	<navigator wx:for="{{recommed}}" url="/pages/enjoy/enjoy?id={{item.id}}" wx:key>
+		<view class="content flex">
+			<view class="recommend-left ajc">
+				<image src="{{item.img}}"></image>
+			</view>
+			<view class="ajc">
+				<view class="recommend-right">
+					<view class="title">{{item.title}}</view>
+          		<view class="des">{{item.createTime}}</view>
+				</view>
+			</view>
+		</view>
+	</navigator>
+</view>

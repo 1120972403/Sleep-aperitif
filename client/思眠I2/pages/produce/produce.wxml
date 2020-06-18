@@ -1,0 +1,30 @@
+<!--pages/produce/produce.wxml-->
+<view class="page-section-spacing">
+	<swiper class="flowerbox-wrapper " previous-margin="27rpx" next-margin="27rpx" circular="true">
+		<swiper-item class="ajc" wx:for="{{list}}" wx:key>
+			<scroll-view style="height:100%;transform: scaleX(0.96);">
+				<!-- 内容区域 -->
+				<view class="card" bindtap="godetail" data-id ="{{item.id}}">
+					<view class="">
+						<image src="{{item.img}}"></image>
+					</view>
+					<view style="font-weight: bold;">
+					{{item.name}}
+					</view>
+					<view style="opacity: 0.5;">{{item.des}}</view>
+					<view class="flex">
+						<view>价格：<text style="text-decoration-line: line-through;color: gainsboro;">￥{{item.price*10}}</text> ，活动价：<text style="color:red;font-size:36rpx;">￥{{item.price}}</text></view>
+						<view class="zixun ajc" catchtap="gocar">立即购买</view>
+					</view>
+				</view>
+
+				<view class="ajc" style="margin-top:20vh">左右滑动获取惊喜</view>
+			</scroll-view>
+
+		</swiper-item>
+
+
+	</swiper>
+
+
+</view>

@@ -1,0 +1,84 @@
+/* pages/shopcard/shopcard.wxss */
+.tabber {
+  width: 100%;
+  height: 70rpx;
+  border-bottom: 2rpx solid#76C2AF;
+}
+
+.type {
+  margin: 5rpx 30rpx;
+
+}
+
+.checked {
+  font-weight: bolder;
+  color: #76C2AF;
+
+}
+
+.flex-left {
+  width: 30vw;
+}
+
+.flex-left image {
+  width: 200rpx;
+}
+
+.flex-right {
+  width: 70vw;
+}
+
+.card {
+  margin: 10rpx;
+  padding: 10rpx;
+  border: 1rpx solid #eee;
+  border-radius: 20rpx;
+}
+
+.name {
+
+  width: 500rpx;
+  overflow: hidden;
+  /*超出部分隐藏*/
+  white-space: nowrap;
+  /*不换行*/
+  text-overflow: ellipsis;
+  /*超出部分文字以...显示*/
+}
+
+.card view {
+  margin: 10rpx 5rpx;
+}
+
+input {
+  background-color: #eee;
+  width: 80rpx;
+  border-radius: 10rpx;
+  line-height: 30rpx;
+  text-align: center;
+  height: 30rpx;
+  margin:10rpx;
+}
+
+.right {
+  position: absolute;
+  right: 5vw;
+}
+.right view{
+  font-size: 30rpx;
+}
+
+.fixed{
+  position: fixed;
+  bottom: 2vh;
+  
+}
+
+
+.squre{
+  width: 140rpx;
+  padding: 10rpx;
+  background-color: #76C2AF;
+  border-radius: 20rpx;
+  color: white;
+}

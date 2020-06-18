@@ -1,0 +1,28 @@
+<!--pages/sleepResult/sleepResult.wxml-->
+<view class="page">
+	<view wx:if="{{score<=6}}">
+		<view class="ajc">
+			<image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1113100338,999366659&fm=26&gp=0.jpg" ></image>
+		</view>
+		<view class="content text-center" style="color:green;">根据测试显示，您不存在失眠的可能，请再次测试</view>
+	</view>
+
+	<view wx:elif="{{score>6}}">
+		<view class="ajc">
+			<image src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1309971544,4115229687&fm=26&gp=0.jpg" ></image>
+		</view>
+		<view class="content text-center">根据测试显示，您存在失眠的可能，请再次测试</view>
+	</view>
+
+	<view class="ajc">
+		<view class="cu-btn" bindtap="again">我想知道 </view>
+		<view class="cu-btn" bindtap="refush">拒绝测试 </view>
+	</view>
+<view>
+	<view class="ajc">
+		<view class="cu-btn bg-mian" bindtap="wirte">发送健康信息</view>
+	</view>
+</view>
+</view>
+
+<!-- 第二次显示的结果 -->

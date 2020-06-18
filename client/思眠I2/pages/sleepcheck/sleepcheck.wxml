@@ -1,0 +1,5 @@
+<!--pages/sleepcheck/sleepcheck.wxml-->
+<view class="box">
+	<view class="title text-center">{{list.title}}</view>
+	<button class="cu-btn {{index == tabindex?'bg-green':''}}" wx:for="{{list.option}}" data-index="{{index}}" wx:key="index" bindtap="check">{{item}}</button>
+</view>

@@ -1,0 +1,45 @@
+<!-- 轮播图 -->
+<view class="swiper">
+	<swiper autoplay="true" interval="5000">
+		<block wx:for="{{swiperList}}" wx:key>
+			<swiper-item style="width:100%;">
+				<image src="{{item.imgUrl}}"></image>
+			</swiper-item>
+		</block>
+	</swiper>
+</view>
+
+
+<!-- 快捷导航 -->
+<view class="box" >
+	<view class="box-flex flex">
+		<block wx:for="{{tabberList}}">
+			<navigator class="box-width" url="{{item.url}}">
+				<view class="ajc">
+					<image src="{{item.img}}"></image>
+				</view>
+				<view class="ajc" style="margin-top:10rpx">
+					<view>{{item.name}}</view>
+				</view>
+			</navigator>
+		</block>
+	</view>
+</view>
+
+
+<!-- 今日推荐 -->
+<view class="recommend">
+	<view class="title">今日推荐</view>
+	<navigator wx:for="{{recommed}}" url="/pages/produce/produce?id={{item.id}}" wx:key>
+		<view class="content flex">
+			<view class="recommend-left ajc">
+				<image src="{{item.img}}"></image>
+			</view>
+			<view class="recommend-right">
+				<view class="name">{{item.name}}</view>
+				<view class="des">{{item.des}}</view>
+				<view class="price">￥{{item.price}}</view>
+			</view>
+		</view>
+	</navigator>
+</view>

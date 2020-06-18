@@ -1,0 +1,27 @@
+page{
+  box-sizing: border-box;
+}
+.name{
+  font-size: 50rpx;
+  margin: 10rpx;
+  /* align-self: center; */
+}
+.img{
+  height: 300rpx;
+  width: 100%;
+}
+.name-head{
+
+  width: 700rpx;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #eee;
+  margin-bottom: 20rpx 0;
+}
+
+.html{
+  padding:15px;
+  background: #ffffff;
+}
+

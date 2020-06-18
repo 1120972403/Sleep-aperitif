@@ -1,0 +1,174 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.11.2",
+	"appid": "wxe022f0f6636bd30c",
+	"projectname": "sm",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "娱乐",
+					"pathName": "pages/enjoy/enjoy",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试",
+					"pathName": "pages/sleeptest/sleeptest",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "睡眠测试",
+					"pathName": "pages/sleepcheck/sleepcheck",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "显示得分",
+					"pathName": "pages/sleepResult/sleepResult",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "反馈",
+					"pathName": "pages/feedback/feedback",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "产品",
+					"pathName": "pages/produce/produce",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "娱乐列表",
+					"pathName": "pages/enjoylist/enjoylist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的健康",
+					"pathName": "pages/myhealth/myhealth",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "医生列表",
+					"pathName": "pages/doctorlist/doctorlist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "chat",
+					"pathName": "pages/chat/chat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "医师详细",
+					"pathName": "pages/doctordetail/doctordetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详细页面",
+					"pathName": "pages/producedetail/producedetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/shopcard/shopcard",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "emr",
+					"pathName": "pages/emr/emr",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,18 @@
+.container{
+  margin:30rpx;
+}
+.textarea{
+  border: 1rpx solid #eee;
+
+}
+textarea{
+  padding: 20rpx;
+}
+.submit{
+  width: 200rpx;
+  background-color: #76C2AF;
+  margin-top: 50rpx;
+  color: white;
+}
+
+ 

@@ -1,0 +1,41 @@
+/* pages/emr/emr.wxss */
+.card {
+  padding: 10rpx;
+  border: 1rpx solid #eee;
+  margin: 20rpx
+}
+
+.name {
+  padding: 20rpx;
+  font-size: 30rpx;
+}
+
+.img {
+  margin-left: 30rpx;
+  border: 1rpx solid #eee;
+  width: 230rpx;
+  height: 230rpx;
+  background-color: #F8F8FF;
+}
+
+image {
+  width: 200rpx;
+  height: 200rpx;
+}
+.content{
+  border: 1rpx solid #eee;
+}
+
+.flost{
+  position: absolute;
+  bottom: 20rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.cu-btn{
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  color: white;
+}

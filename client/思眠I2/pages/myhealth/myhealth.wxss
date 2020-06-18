@@ -1,0 +1,45 @@
+/* pages/myhealth/myhealth.wxss */
+page{
+  background-color: #eee;
+}
+
+.card{
+  width: 90%;
+  height: 300rpx;
+  border: 1rpx solid white;
+  border-radius: 20rpx;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  margin-left: 80rpx;
+  font-size: 40rpx;
+  color: #A9A7A7;
+}
+.card1{
+  width: 42%;
+  height: 300rpx;
+  border: 1rpx solid white;
+  border-radius: 20rpx;
+  background-color: white;
+  margin: 0 20rpx;
+}
+.head image{
+  width: 200rpx;
+}
+.add image{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+
+.sleep image{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 10rpx;
+}
+.bg-grey{
+  background-color: #CEC8C8;
+}

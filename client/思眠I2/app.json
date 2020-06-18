@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/sleeptest/sleeptest",
+    "pages/mine/mine",
+    "pages/enjoylist/enjoylist",
+    "pages/enjoy/enjoy",
+    "pages/sleepcheck/sleepcheck",
+    "pages/sleepResult/sleepResult",
+    "pages/feedback/feedback",
+    "pages/produce/produce",
+    "pages/producedetail/producedetail",
+    "pages/info/info",
+    "pages/myhealth/myhealth",
+    "pages/doctorlist/doctorlist",
+    "pages/doctordetail/doctordetail",
+    "pages/chat/chat",
+    "pages/shopcard/shopcard",
+    "pages/emr/emr"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "思眠",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+		"selectedColor": "#A9FFFF",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home_cur.png"
+      },
+      {
+        "pagePath": "pages/sleeptest/sleeptest",
+        "text": "睡眠测试",
+        "iconPath": "/images/shuju.png",
+        "selectedIconPath": "/images/shuju_cur.png"
+
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/mine.png",
+        "selectedIconPath": "/images/mine_cur.png"
+
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

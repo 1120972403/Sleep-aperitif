@@ -1,0 +1,29 @@
+/* pages/producedetail/producedetail.wxss */
+
+.card view{
+  margin:10rpx;
+}
+.card{
+  border: 1rpx solid #eee;
+  padding: 20rpx;
+  border-radius: 20rpx;
+}
+ image{
+  width: 100%;
+}
+
+.zixun {
+  background-color: #76C2AF;
+  font-size: 26rpx;
+  width: 130rpx;
+  padding: 5rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  color: white;
+
+}
+
+.content{
+  border-top: 10rpx solid #eee;
+  padding-top: 20rpx;
+}

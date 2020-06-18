@@ -1,0 +1,12 @@
+<view class='html'>
+	<view class='text-black text-xl'>{{detail.title}}</view>
+	<view class="name-head">
+		<text style="color: gainsboro;">时间:{{detail.createTime}}</text>
+		<!-- 2为健康饮食 3为助眠常识 -->
+		<text style="color: gainsboro;" >类型:{{detail.type==2?'健康饮食':'助眠常识'}}</text>
+	</view>
+	<view>
+		<rich-text nodes="{{html}}" style="border-top:1px dotted #eee;"></rich-text>
+	</view>
+
+</view>

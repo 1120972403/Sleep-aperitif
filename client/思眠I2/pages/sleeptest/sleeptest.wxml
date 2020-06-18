@@ -1,0 +1,8 @@
+<!--pages/sleeptest/sleeptest.wxml-->
+<block wx:if="true">
+	<view class="content">
+		<image class="bacImg" src="/images/bg.jpg"></image>
+		<button class="sleepTest" bindtap="toTest">睡眠测试</button>
+		<text class="text-center text">良好睡眠从我做起</text>
+	</view>
+</block>

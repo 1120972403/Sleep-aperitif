@@ -1,0 +1,73 @@
+<!--pages/chat/chat.wxml-->
+
+<view class="cu-chat">
+  <view class="cu-item">
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg);"></view>
+    <view class="main">
+      <view class=" shadow">
+        <text class="bg-green padding radius" bindtap="gocheck">请先上传个人健康信息</text>
+      </view>
+    </view>
+    <view class="date "> 13:24</view>
+  </view>
+  <view class="cu-item self">
+    <view class="main">
+      <view class="content bg-white shadow">
+        <text>今天睡眠不佳</text>
+      </view>
+    </view>
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+    <view class="date">2020年6月16日 13:23</view>
+  </view>
+
+  <view class="cu-item">
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg);"></view>
+    <view class="main">
+      <view class="content shadow">
+        <text>什么个情况</text>
+      </view>
+    </view>
+    <view class="date "> 13:24</view>
+  </view>
+
+  <view class="cu-item self">
+    <view class="main">
+      <image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1826352106,3766792642&fm=26&gp=0.jpg" class="radius" mode="widthFix"></image>
+    </view>
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+    <view class="date"> 13:23</view>
+  </view>
+
+  <view class="cu-item self">
+    <view class="main">
+      <view class="action">
+        <text class="cuIcon-locationfill text-orange text-xxl"></text>
+      </view>
+      <view class="content shadow">
+        请问医生怎么解决我这个情况
+      </view>
+    </view>
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+    <view class="date">13:23</view>
+  </view>
+
+  <view class="cu-item">
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg);"></view>
+    <view class="main">
+      <view class="content shadow">
+        <view>我推荐您买这个枕头</view>
+         <image src="https://g-search1.alicdn.com/img/bao/uploaded/i4/i3/276626389/O1CN01ODpbBq1x4D3XSSQi9_!!0-item_pic.jpg_460x460Q90.jpg_.webp" class="radius" mode="widthFix" bindtap="goshop"></image>
+      </view>
+    </view>
+    <view class="date "> 13:27</view>
+  </view>
+</view>
+
+<view style="height:120rpx;"> 
+
+</view>
+
+<view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
+  <input class="solid-bottom" bindfocus="InputFocus" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10"></input>
+  <button class="cu-btn bg-mian shadow">发送</button>
+</view>

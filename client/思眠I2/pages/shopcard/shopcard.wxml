@@ -1,0 +1,104 @@
+<!--pages/shopcard/shopcard.wxml-->
+
+<!-- 头部滑动框 -->
+<view class="flex tabber">
+	<block wx:for="{{tablist}}" wx:key>
+		<view class="type  {{current==index ?'checked':''}}" bindtap="change" data-index="{{index}}">
+			{{item.name}}
+		</view>
+	</block>
+</view>
+<view wx:if="{{current==0}}">
+	<view class="flex card">
+		<view class="flex-left">
+			<image src="https://img.alicdn.com/imgextra/i3/276626389/O1CN019Nb0fl1x4D4LLVZky_!!276626389.jpg" mode="widthFix"></image>
+		</view>
+		<view class="flex-right">
+			<view class="name">泰国天然乳胶枕头家用橡胶枕芯男女学生宿舍单人护颈椎防螨儿童枕</view>
+			<view style="opacity: 0.5;">美国进口100%阻螨杜邦面料</view>
+
+			<view style="color:red;">￥299.00</view>
+			<!-- 加减 -->
+			<view class="ajc right">
+				<view bindtap="jian">-</view>
+				<input value="{{num}}" disabled></input>
+				<view bindtap="add">+</view>
+			</view>
+
+		</view>
+	</view>
+	<!-- 底部计算 -->
+	<view class=" fixed ajc">
+		<view>
+			合计：￥{{totalprice}}
+		</view>
+		<view class="squre ajc" bindtap="pay">
+			立即付款
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{current==1}}">
+	<view class="flex card">
+		<view class="flex-left">
+			<image src="https://img.alicdn.com/imgextra/i3/276626389/O1CN019Nb0fl1x4D4LLVZky_!!276626389.jpg" mode="widthFix"></image>
+		</view>
+		<view class="flex-right">
+			<view class="name">泰国天然乳胶枕头家用橡胶枕芯男女学生宿舍单人护颈椎防螨儿童枕</view>
+			<view style="opacity: 0.5;">订单号：154651561651</view>
+			<view style="color:red;">共购买了{{num}}件商品，实际支付￥{{totalprice}} </view>
+			<view class="ajc">
+				<view class="btn-cur" bindtap="tixin">提醒发货</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<view wx:if="{{current==2}}">
+	<view class="flex card">
+		<view class="flex-left">
+			<image src="https://img.alicdn.com/imgextra/i3/276626389/O1CN019Nb0fl1x4D4LLVZky_!!276626389.jpg" mode="widthFix"></image>
+		</view>
+		<view class="flex-right">
+			<view class="name">泰国天然乳胶枕头家用橡胶枕芯男女学生宿舍单人护颈椎防螨儿童枕</view>
+			<view style="opacity: 0.5;">订单号：154651561651</view>
+			<view style="opacity: 0.5;">您的物流号：xxxxxxxx </view>
+			<view class="ajc">
+				<view class="btn-cur" bindtap="chakan">查看物流</view>
+				<view class="btn-cur" bindtap="queding" style="background-color:red;">确定收货</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<view wx:if="{{current==3}}">
+	<view class="flex card">
+		<view>
+			<image src="https://img.alicdn.com/imgextra/i3/276626389/O1CN019Nb0fl1x4D4LLVZky_!!276626389.jpg" mode="widthFix" style="width:100rpx"></image>
+		</view>
+		<view class="ajc">
+			<view>泰国天然乳胶枕头家用橡胶枕芯男女学生宿舍单人护颈椎防螨儿童枕</view>
+		</view>
+		<view class="ajc">
+			<image src="/images/del.png" style="width:50rpx;height:50rpx;" bindtap="del"></image>
+		</view>
+	</view>
+</view>
+
+
+<view wx:if="{{current==4}}">
+	<view class="flex card">
+		<view>
+			<image src="https://img.alicdn.com/imgextra/i3/276626389/O1CN019Nb0fl1x4D4LLVZky_!!276626389.jpg" mode="widthFix" style="width:100rpx"></image>
+		</view>
+		<view class="ajc">
+			<view>泰国天然乳胶枕头家用橡胶枕芯男女学生宿舍单人护颈椎防螨儿童枕</view>
+		</view>
+
+		<view class="ajc">
+			<image src="/images/del.png" style="width:50rpx;height:50rpx;" bindtap="del"></image>
+		</view>
+	</view>
+</view>

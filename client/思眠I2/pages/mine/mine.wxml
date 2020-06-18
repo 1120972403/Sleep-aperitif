@@ -1,0 +1,18 @@
+<!--pages/mine/mine.wxml-->
+<!-- 头部 -->
+<view class="head flex">
+	<view class="photo">
+		<open-data type="userAvatarUrl"></open-data>
+	</view>
+	<view class="ajc" style="margin-left:30rpx;">
+		<open-data type="userNickName"></open-data>
+	</view>
+</view>
+
+<!-- 导航 -->
+<navigator wx:for="{{list}}" wx:key url="{{item.url}}">
+	<view class="tab">
+		<view class="name">{{item.text}}</view>
+		<image src="/images/right.png" class="img"></image>
+	</view>
+</navigator> 

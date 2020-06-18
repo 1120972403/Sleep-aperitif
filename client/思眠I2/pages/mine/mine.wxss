@@ -1,0 +1,36 @@
+/* pages/mine/mine.wxss */
+.head {
+  background-color: #76C2AF;
+  padding: 40rpx;
+  color: white;
+}
+
+.photo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.tab {
+  margin: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.tab .image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.img {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.tab .name {
+  margin-left: 30rpx;
+}

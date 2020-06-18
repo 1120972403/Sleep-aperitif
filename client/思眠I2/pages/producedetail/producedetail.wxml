@@ -1,0 +1,24 @@
+<!--pages/producedetail/producedetail.wxml-->
+<!-- 内容区域 -->
+<view class="card">
+	<view class="">
+		<image src="{{detail.img}}"></image>
+	</view>
+	<view style="font-weight: bold;">
+		名称：{{detail.name}}
+	</view>
+	<view style="opacity: 0.5;">材质：{{detail.des}}</view>
+	<view class="flex">
+		<view>价格：<text style="text-decoration-line: line-through;color: gainsboro;">￥{{detail.price*10}}</text> ，活动价：<text style="color:red;font-size:36rpx;">￥{{detail.price}}</text></view>
+		<view class="zixun ajc" bindtap="gocar" data-id="{{detail.id}}">立即购买</view>
+	</view>
+
+	<!-- 详细描述 -->
+	<view style="font-weight: bold;margin:20rpx;">商品介绍</view>
+	<view class="content">
+		
+		<image src="https://img.alicdn.com/imgextra/i3/276626389/O1CN019Nb0fl1x4D4LLVZky_!!276626389.jpg" mode="widthFix"></image>
+		<image src="https://img.alicdn.com/imgextra/i1/276626389/O1CN0154uYOE1x4D4IztOaf_!!276626389.jpg" mode="widthFix"></image>
+		<image src="https://img.alicdn.com/imgextra/i1/276626389/O1CN012jdCSw1x4D4PyhvNK_!!276626389.jpg" mode="widthFix"></image>
+	</view>
+</view>

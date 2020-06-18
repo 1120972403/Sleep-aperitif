@@ -1,0 +1,24 @@
+<!--pages/doctorlist/doctorlist.wxml-->
+<!--  -->
+<view class="recommend">
+	<view class="title">医师列表</view>
+	<navigator wx:for="{{list}}" url="/pages/doctordetail/doctordetail?id={{item.id}}" wx:key class="ajc" hover-class="none">
+		<view class="content flex">
+			<view class="recommend-left ajc bg-header" >
+			{{item.tag}}
+			</view>
+			<view class="recommend-right">
+				<view class="flex">
+					<view class="name">{{item.name}}</view>
+					<view class="ajc score" style="color:red;">5.0分</view>
+				</view>
+
+				<view class="des">专业：{{item.des}}</view>
+				<view class="right">
+					<view class="zixun" catchtap="chat">立即咨询</view>
+				</view>
+
+			</view>
+		</view>
+	</navigator>
+</view>

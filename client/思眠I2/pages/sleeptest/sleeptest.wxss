@@ -1,0 +1,36 @@
+/* pages/sleeptest/sleeptest.wxss */
+.content{
+  
+}
+/* 背景图样式 */
+.bacImg{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.sleepTest{
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 27.5vh;
+  margin: auto;
+  width: 40vw;
+}
+button{
+  background-color: #3D539C;
+  color: white
+}
+/* 底部文本样式 */
+
+.text{
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 10vh;
+  margin: auto;
+
+  font-size: 30rpx;
+  font-style: italic;
+  opacity: 0.5;
+  color: white;
+}

@@ -1,0 +1,28 @@
+<!--pages/myhealth/myhealth.wxml-->
+<!-- 连接标志 -->
+<view class="ajc " style="margin-top:30rpx;">
+	<view class="card">
+		<view class="head">
+			<image src="/images/zhengtou.png" mode="widthFix"></image>
+		</view>
+		<view class="title">助眠枕头</view>
+	</view>
+</view>
+<view class="ajc" style="margin-top:20rpx;">
+	<view class="card1 ajc">
+		<view>
+			<view class="sleep ajc">
+				<image src="/images/sleep.png"></image>
+			</view>
+			<view class="text-center" style="color:#76C2AF;">睡眠情况</view>
+		</view>
+	</view>
+	<view class="card1 ajc bg-grey">
+		<view bindtap="add">
+			<view class="add ajc">
+				<image src="/images/jia.png"></image>
+			</view>
+			<view class="text-center" style="color:white;">添加设备</view>
+		</view>
+	</view>
+</view>

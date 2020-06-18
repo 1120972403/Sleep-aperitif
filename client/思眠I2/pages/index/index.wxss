@@ -1,0 +1,78 @@
+/* pages/index/index.wxss */
+
+swiper{
+  width: 100%;
+  height: 350rpx;
+}
+
+.swiper image{
+  width: 100%;
+  height: 350rpx;
+}
+
+.box{
+  margin-top: 20rpx;
+}
+.box-flex{
+  flex-wrap: wrap;
+}
+.box image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.box-width{
+  width: 32%;
+  border: 1rpx solid #eee;
+  padding: 30rpx 0;
+  border-radius: 10rpx;
+  margin: 5rpx;
+}
+
+.title{
+  font-size: 32rpx;
+  margin: 10rpx 30rpx;
+  border-bottom: 1rpx solid #eee;
+  padding-bottom:10rpx;
+}
+.content{
+  width: 100%;
+  border-bottom: 1rpx solid #eee;
+  padding: 10rpx 0;
+}
+.recommend-left{
+  width: 25%;
+}
+.recommend-left image{
+  width: 100rpx;
+  height: 100rpx;
+  padding: 10rpx 0;
+}
+.recommend-riht{
+  width: 75%;
+}
+ .name{
+  font-size: 32rpx;
+  margin: 10rpx 0;
+  width: 500rpx;
+  overflow: hidden;
+  /*超出部分隐藏*/
+  white-space: nowrap;
+  /*不换行*/
+  text-overflow: ellipsis;
+  /*超出部分文字以...显示*/
+}
+.price{
+  color:red;
+  font-size: 26rpx;
+}
+
+.des{
+  width: 500rpx;
+  color: #E5E1E1;
+  overflow: hidden;
+  /*超出部分隐藏*/
+  white-space: nowrap;
+  /*不换行*/
+  text-overflow: ellipsis;
+  /*超出部分文字以...显示*/
+}

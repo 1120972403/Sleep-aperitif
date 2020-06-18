@@ -1,0 +1,11 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="container">
+	<view class="content">
+		<view class="text-center" style="margin:30rpx 0;">感谢您提出的宝贵意见</view>
+		<view class="textarea">
+			<textarea placeholder="请在此处填写您要反馈的问题" bindinput="input" ></textarea>
+		</view>
+	</view>
+
+	<button class="submit" bindtap="save">提交</button>
+</view>

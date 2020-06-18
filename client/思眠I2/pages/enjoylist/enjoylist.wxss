@@ -1,0 +1,57 @@
+/* pages/enjoylist/enjoylist.wxss */
+.tab {
+  border: 1rpx solid #eee;
+  margin: 20rpx;
+  padding: 10rpx 20rpx;
+  background-color: gainsboro;
+  border-radius: 20rpx;
+}
+
+.tabselect {
+  background-color: #76C2AF;
+  color: white;
+}
+
+.recommend {
+  margin-top: 20rpx;
+  border: 1rpx solid #eee;
+}
+
+.title {
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #eee;
+  padding-bottom: 10rpx;
+  width: 500rpx;
+}
+
+.content {
+  width: 100%;
+  border-bottom: 1rpx solid #eee;
+  padding: 10rpx 0;
+}
+
+.recommend-left {
+  width: 25%;
+}
+
+.recommend-left image {
+  width: 120rpx;
+  height: 120rpx;
+  padding: 10rpx 0;
+  border-radius: 20rpx;
+}
+
+.recommend-riht {
+  width: 75%;
+}
+
+.recommend-riht .name {
+  font-size: 32rpx;
+  margin: 10rpx 0;
+}
+
+.des {
+
+  width: 500rpx;
+  color: gainsboro;
+}

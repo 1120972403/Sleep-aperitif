@@ -1,0 +1,51 @@
+<!--pages/emr/emr.wxml-->
+<view>
+	<view class="flex card">
+		<view class="ajc">
+			<view class="name">舌象</view>
+		</view>
+		<view wx:if="{{sx!=''}}" class="img ajc">
+			<image src="{{sx}}"></image>
+		</view>
+		<view class="img ajc" bindtap="photo" data-type="sx">
+			<image src="/images/jia.png" wx:if="{{sx==''}}"></image>
+			<view wx:else>重新上传</view>
+		</view>
+	</view>
+	<view class="flex card">
+		<view class="ajc">
+			<view class="name ">舌底</view>
+		</view>
+		<view wx:if="{{sd!=''}}" class="img ajc">
+			<image src="{{sd}}"></image>
+		</view>
+		<view class="img ajc" bindtap="photo" data-type="sd">
+			<image src="/images/jia.png" wx:if="{{sd==''}}"></image>
+			<view wx:else>重新上传</view>
+		</view>
+	</view>
+	<view class="flex card">
+		<view class="ajc">
+			<view class="name ">面象</view>
+		</view>
+		<view wx:if="{{mx!=''}}" class="img ajc">
+			<image src="{{mx}}"></image>
+		</view>
+		<view class="img ajc" bindtap="photo" data-type="mx">
+			<image src="/images/jia.png" wx:if="{{mx==''}}"></image>
+			<view wx:else>重新上传</view>
+		</view>
+	</view>
+	<view class="flex card">
+		<view class="ajc">
+			<view class="name">自述</view>
+		</view>
+		<view class="content ajc">
+			<textarea bindinput="content"></textarea>
+		</view>
+	</view>
+</view>
+
+<view class="ajc flost"  bindtap="wirte">
+	<view class="cu-btn bg-mian">上传健康信息</view>
+</view>

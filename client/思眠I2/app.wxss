@@ -1,0 +1,33 @@
+ page{
+   /* background-color: #C3D0F4; */
+ }
+ 
+ .flex{
+   display: flex;
+ }
+ .text-center{
+   text-align: center;
+ }
+ .ajc{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ view{
+   font-size: 30rpx;
+   font-family: Arial, Helvetica, sans-serif;
+ }
+
+.bg-mian{
+  background-color: #76C2AF;
+}
+ .btn-cur {
+  background-color: #76C2AF;
+  font-size: 26rpx;
+  width: 130rpx;
+  padding: 5rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  color: white;
+
+}

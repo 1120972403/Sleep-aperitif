@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jingyiban.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="cn.jingyiban.pojo.Order" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="produce_id" property="produceId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <association property="produce" javaType="cn.jingyiban.pojo.Produce">
+      <result column="name" property="name" jdbcType="VARCHAR" />
+      <result column="img" property="img" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, produce_id, user_id, price, address, num, create_time, update_time, status
+  </sql>
+
+  <resultMap id="adminToUserPay" type="cn.jingyiban.pojo.Order" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="produce_id" property="produceId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <association property="produce" javaType="cn.jingyiban.pojo.Produce">
+      <result column="name" property="name" jdbcType="VARCHAR" />
+      <result column="img" property="img" jdbcType="VARCHAR" />
+    </association>
+
+    <association property="member" javaType="cn.jingyiban.pojo.Member">
+      <result column="user_name" property="name" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+
+  <!--管理员查询已经支付的列表-->
+  <select id="getuserPayList" resultMap="adminToUserPay" parameterType="java.lang.Integer" >
+    SELECT a.*,b.name,b.img ,c.name as user_name from sm_order  a
+    LEFT JOIN sm_produce b on a.produce_id = b.id
+    LEFT JOIN sm_member c on c.uid = a.user_id
+    where a.status = 2
+    ORDER BY a.create_time desc
+  </select>
+
+  <!--根据用户查询所有的订单-->
+  <select id="getMyProduceList" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT a.*,b.name,b.img  from sm_order  a
+    LEFT JOIN sm_produce b on a.produce_id = b.id
+    where a.user_id = #{user_id,jdbcType=INTEGER}
+    ORDER BY a.create_time desc
+
+  </select>
+
+  <select id="selectByPrimaryKey" resultType="cn.jingyiban.pojo.Order" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sm_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sm_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jingyiban.pojo.Order" >
+    insert into sm_order (id, produce_id, user_id, 
+      price, address, num, create_time, 
+      update_time,status)
+    values (#{id,jdbcType=INTEGER}, #{produceId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{price,jdbcType=DECIMAL}, #{address,jdbcType=VARCHAR}, #{num,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP},#{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jingyiban.pojo.Order" >
+    insert into sm_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="produceId != null" >
+        produce_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="produceId != null" >
+        #{produceId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jingyiban.pojo.Order" >
+    update sm_order
+    <set >
+      <if test="produceId != null" >
+        produce_id = #{produceId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jingyiban.pojo.Order" >
+    update sm_order
+    set produce_id = #{produceId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      address = #{address,jdbcType=VARCHAR},
+      num = #{num,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

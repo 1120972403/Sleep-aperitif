@@ -1,0 +1,19 @@
+server:
+  port: 8888
+spring:
+  datasource:
+#    username: root
+#    password: 17340092967
+#    url: jdbc:mysql://localhost:3306/sm_jingyiban_cn?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: sm_jingyiban_cn
+    password: 33AHTWtyMxxnG3HN
+    url: jdbc:mysql://139.155.138.152:3306/sm_jingyiban_cn?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 10
+    minIdle: 10
+    maxActive: 20
+    maxWait: 60000
+    validationQuery: select 1
+    testWhileIdle: false
+    testOnBorrow: true
+    testOnReturn: false

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jingyiban.mapper.BankRecordMapper" >
+  <resultMap id="BaseResultMap" type="cn.jingyiban.pojo.BankRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="bank_id" property="bankId" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <resultMap id="BankRecordWithBank" type="cn.jingyiban.pojo.BankRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="bank_id" property="bankId" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+
+    <!-- association ：配置一对一属性 -->
+    <!-- property:实体类中里面的 bank 属性名 -->
+    <!-- javaType:属性类型 -->
+    <association property="bank" javaType="cn.jingyiban.pojo.Bank" >
+      <id column="titie_id" property="id" jdbcType="INTEGER" />
+      <result column="title" property="title" jdbcType="VARCHAR" />
+      <result column="option1" property="option1" jdbcType="VARCHAR" />
+      <result column="option2" property="option2" jdbcType="VARCHAR" />
+      <result column="option3" property="option3" jdbcType="VARCHAR" />
+      <result column="option4" property="option4" jdbcType="VARCHAR" />
+      <result column="option5" property="option5" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bank_id, score, user_id, type, create_time
+  </sql>
+  <!--根据用户查询记录-->
+<!--  selectByUserID-->
+  <select id="selectByUserID" resultMap="BankRecordWithBank" parameterType="java.lang.Integer" >
+    select s.id,s.bank_id, s.score, s.user_id, s.type, s.create_time,t.id as titie_id,t.option1,t.option2,t.option3,t.option4,t.option5
+    from sm_bank_record s,sm_bank t where t.id=s.bank_id and
+    s.user_id = #{user_id,jdbcType=INTEGER} ORDER BY create_time DESC
+  </select>
+<!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
+<!--    select-->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from sm_bank_record-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </select>-->
+<!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
+<!--    select-->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from sm_bank_record-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </select>-->
+
+
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >-->
+<!--    delete from sm_bank_record-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="cn.jingyiban.pojo.BankRecord" >-->
+<!--    insert into sm_bank_record (id, bank_id, score,-->
+<!--      user_id, type, create_time-->
+<!--      )-->
+<!--    values (#{id,jdbcType=INTEGER}, #{bankId,jdbcType=INTEGER}, #{score,jdbcType=INTEGER},-->
+<!--      #{userId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}-->
+<!--      )-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" parameterType="cn.jingyiban.pojo.BankRecord" >-->
+<!--    insert into sm_bank_record-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides="," >-->
+<!--      <if test="id != null" >-->
+<!--        id,-->
+<!--      </if>-->
+<!--      <if test="bankId != null" >-->
+<!--        bank_id,-->
+<!--      </if>-->
+<!--      <if test="score != null" >-->
+<!--        score,-->
+<!--      </if>-->
+<!--      <if test="userId != null" >-->
+<!--        user_id,-->
+<!--      </if>-->
+<!--      <if test="type != null" >-->
+<!--        type,-->
+<!--      </if>-->
+<!--      <if test="createTime != null" >-->
+<!--        create_time,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides="," >-->
+<!--      <if test="id != null" >-->
+<!--        #{id,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="bankId != null" >-->
+<!--        #{bankId,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="score != null" >-->
+<!--        #{score,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="userId != null" >-->
+<!--        #{userId,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="type != null" >-->
+<!--        #{type,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="createTime != null" >-->
+<!--        #{createTime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="cn.jingyiban.pojo.BankRecord" >-->
+<!--    update sm_bank_record-->
+<!--    <set >-->
+<!--      <if test="bankId != null" >-->
+<!--        bank_id = #{bankId,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="score != null" >-->
+<!--        score = #{score,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="userId != null" >-->
+<!--        user_id = #{userId,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="type != null" >-->
+<!--        type = #{type,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="createTime != null" >-->
+<!--        create_time = #{createTime,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="cn.jingyiban.pojo.BankRecord" >-->
+<!--    update sm_bank_record-->
+<!--    set bank_id = #{bankId,jdbcType=INTEGER},-->
+<!--      score = #{score,jdbcType=INTEGER},-->
+<!--      user_id = #{userId,jdbcType=INTEGER},-->
+<!--      type = #{type,jdbcType=INTEGER},-->
+<!--      create_time = #{createTime,jdbcType=TIMESTAMP}-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </update>-->
+</mapper>

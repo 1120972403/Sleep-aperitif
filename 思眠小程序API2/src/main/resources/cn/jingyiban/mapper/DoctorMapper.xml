@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jingyiban.mapper.DoctorMapper" >
+  <resultMap id="BaseResultMap" type="cn.jingyiban.pojo.Doctor" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="phone" property="phone" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.jingyiban.pojo.Doctor" extends="BaseResultMap" >
+    <result column="des" property="des" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+
+
+  <sql id="Base_Column_List" >
+    id, openid, name, sex, age, price, phone, status, address, admin_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    des
+  </sql>
+
+<!--selectAll-->
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    id,name,des,sex
+    from sm_doctor
+  </select>
+
+  <!--查询是否存在openid-->
+  <select id="queryOpenidIsExit" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sm_doctor
+    where openid = #{openid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sm_doctor
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sm_doctor
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jingyiban.pojo.Doctor" >
+    insert into sm_doctor (id, openid, name, 
+      sex, age, price, phone, 
+      status, address, admin_id, 
+      des)
+    values (#{id,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{phone,jdbcType=CHAR}, 
+      #{status,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{adminId,jdbcType=INTEGER}, 
+      #{des,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jingyiban.pojo.Doctor" >
+    insert into sm_doctor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="adminId != null" >
+        admin_id,
+      </if>
+      <if test="des != null" >
+        des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="des != null" >
+        #{des,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jingyiban.pojo.Doctor" >
+    update sm_doctor
+    <set >
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="adminId != null" >
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="des != null" >
+        des = #{des,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.jingyiban.pojo.Doctor" >
+    update sm_doctor
+    set openid = #{openid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      phone = #{phone,jdbcType=CHAR},
+      status = #{status,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      des = #{des,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jingyiban.pojo.Doctor" >
+    update sm_doctor
+    set openid = #{openid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      phone = #{phone,jdbcType=CHAR},
+      status = #{status,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      admin_id = #{adminId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

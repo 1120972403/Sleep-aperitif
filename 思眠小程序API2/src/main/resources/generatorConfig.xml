@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="F:\java\mysql-connector-java-8.0.20.jar" />
+
+    <context id="MySQL" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/sm_jingyiban_cn?serverTimezone=UTC"
+                        userId="root"
+                        password="17340092967">
+        </jdbcConnection>
+
+        <!--是否启用java.math.BigDecimal-->
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--生成实体类-->
+        <javaModelGenerator targetPackage="cn.jingyiban.pojo" targetProject="src\main\java" />
+        <!--xxxMapper.xml-->
+        <sqlMapGenerator targetPackage="cn.jingyiban.mapper"  targetProject="src\main\resources" />
+        <!--mapper接口位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.jingyiban.mapper"  targetProject="src\main\java" />
+
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
+<!--        <table tableName="sm_admin" domainObjectName="Admin" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_bank" domainObjectName="Bank" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_bank_record" domainObjectName="BankRecord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_chat" domainObjectName="Chat" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_doctor" domainObjectName="Doctor" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_doctor_apply" domainObjectName="DoctorApply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_emr" domainObjectName="Emr" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_enjoy" domainObjectName="Enjoy" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_order" domainObjectName="Order" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_produce" domainObjectName="Produce" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_produce_type" domainObjectName="ProduceType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="sm_member" domainObjectName="Member" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+        <table tableName="sm_emr_level" domainObjectName="EmrLevel" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+
+
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jingyiban.mapper.BankMapper" >
+  <resultMap id="BaseResultMap" type="cn.jingyiban.pojo.Bank" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="option1" property="option1" jdbcType="VARCHAR" />
+    <result column="option2" property="option2" jdbcType="VARCHAR" />
+    <result column="option3" property="option3" jdbcType="VARCHAR" />
+    <result column="option4" property="option4" jdbcType="VARCHAR" />
+    <result column="option5" property="option5" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, title, option1, option2, option3, option4, option5, type
+  </sql>
+
+  <select id="getTypeBanKList" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from sm_bank
+    where type = #{type,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sm_bank
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sm_bank
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jingyiban.pojo.Bank" >
+    insert into sm_bank (id, title, option1, 
+      option2, option3, option4, 
+      option5, type)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{option1,jdbcType=VARCHAR}, 
+      #{option2,jdbcType=VARCHAR}, #{option3,jdbcType=VARCHAR}, #{option4,jdbcType=VARCHAR}, 
+      #{option5,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jingyiban.pojo.Bank" >
+    insert into sm_bank
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="option1 != null" >
+        option1,
+      </if>
+      <if test="option2 != null" >
+        option2,
+      </if>
+      <if test="option3 != null" >
+        option3,
+      </if>
+      <if test="option4 != null" >
+        option4,
+      </if>
+      <if test="option5 != null" >
+        option5,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="option1 != null" >
+        #{option1,jdbcType=VARCHAR},
+      </if>
+      <if test="option2 != null" >
+        #{option2,jdbcType=VARCHAR},
+      </if>
+      <if test="option3 != null" >
+        #{option3,jdbcType=VARCHAR},
+      </if>
+      <if test="option4 != null" >
+        #{option4,jdbcType=VARCHAR},
+      </if>
+      <if test="option5 != null" >
+        #{option5,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jingyiban.pojo.Bank" >
+    update sm_bank
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="option1 != null" >
+        option1 = #{option1,jdbcType=VARCHAR},
+      </if>
+      <if test="option2 != null" >
+        option2 = #{option2,jdbcType=VARCHAR},
+      </if>
+      <if test="option3 != null" >
+        option3 = #{option3,jdbcType=VARCHAR},
+      </if>
+      <if test="option4 != null" >
+        option4 = #{option4,jdbcType=VARCHAR},
+      </if>
+      <if test="option5 != null" >
+        option5 = #{option5,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jingyiban.pojo.Bank" >
+    update sm_bank
+    set title = #{title,jdbcType=VARCHAR},
+      option1 = #{option1,jdbcType=VARCHAR},
+      option2 = #{option2,jdbcType=VARCHAR},
+      option3 = #{option3,jdbcType=VARCHAR},
+      option4 = #{option4,jdbcType=VARCHAR},
+      option5 = #{option5,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

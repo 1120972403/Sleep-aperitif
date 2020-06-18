@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jingyiban.mapper.ProduceMapper" >
+  <resultMap id="BaseResultMap" type="cn.jingyiban.pojo.Produce" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="view_num" property="viewNum" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
+    <result column="des" property="des" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.jingyiban.pojo.Produce" extends="BaseResultMap" >
+
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, type_id, img, price, view_num, create_time, admin_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    des,content
+  </sql>
+<!--getlist-->
+
+  <select id="getlist" resultType="cn.jingyiban.pojo.Produce" parameterType="java.lang.Integer" >
+    select
+    id, name,img,price,des
+    from sm_produce
+    where type_id = 1
+    ORDER BY  RAND() LIMIT 3
+  </select>
+
+  <!--获取商品列表-->
+  <select id="select" resultType="cn.jingyiban.pojo.Produce" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sm_produce
+
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sm_produce
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sm_produce
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jingyiban.pojo.Produce" >
+    insert into sm_produce (id, name, type_id, 
+      img, price, view_num, 
+      create_time, admin_id, des
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
+      #{img,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{viewNum,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{adminId,jdbcType=INTEGER}, #{des,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jingyiban.pojo.Produce" >
+    insert into sm_produce
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="viewNum != null" >
+        view_num,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="adminId != null" >
+        admin_id,
+      </if>
+      <if test="des != null" >
+        des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="viewNum != null" >
+        #{viewNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="des != null" >
+        #{des,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jingyiban.pojo.Produce" >
+    update sm_produce
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="viewNum != null" >
+        view_num = #{viewNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminId != null" >
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="des != null" >
+        des = #{des,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.jingyiban.pojo.Produce" >
+    update sm_produce
+    set name = #{name,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      img = #{img,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      view_num = #{viewNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      des = #{des,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jingyiban.pojo.Produce" >
+    update sm_produce
+    set name = #{name,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      img = #{img,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      view_num = #{viewNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      admin_id = #{adminId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

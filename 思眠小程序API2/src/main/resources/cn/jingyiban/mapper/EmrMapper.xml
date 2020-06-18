@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jingyiban.mapper.EmrMapper" >
+  <resultMap id="BaseResultMap" type="cn.jingyiban.pojo.Emr" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="emr_level_id" property="emrLevelId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_img" property="userImg" jdbcType="VARCHAR" />
+    <result column="user_content" property="userContent" jdbcType="VARCHAR" />
+    <result column="user_time" property="userTime" jdbcType="TIMESTAMP" />
+    <result column="doctor_id" property="doctorId" jdbcType="INTEGER" />
+    <result column="doctor_content" property="doctorContent" jdbcType="VARCHAR" />
+    <result column="doctor_time" property="doctorTime" jdbcType="TIMESTAMP" />
+    <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR" />
+    <association property="member" javaType="cn.jingyiban.pojo.Member">
+      <id column="uid" property="uid" jdbcType="INTEGER" />
+      <result column="user_name" property="name" jdbcType="INTEGER" />
+      <result column="user_url" property="url" jdbcType="VARCHAR" />
+    </association>
+    <association property="doctor" javaType="cn.jingyiban.pojo.Doctor">
+      <id column="doctor_id" property="id" jdbcType="INTEGER" />
+      <result column="doctor_name" property="name" jdbcType="INTEGER" />
+    </association>
+  </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    id, emr_level_id, user_id, user_img, user_content, user_time, doctor_id, doctor_content, 
+    doctor_time, doctor_img
+  </sql>
+
+  <!--用户查询自己的emr列表-->
+  <select id="selectEmrListByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select a.*,b.`name` as user_name,b.uid,b.url as user_url,c.`name` as doctor_name,c.id as doctor_id from sm_emr a
+    LEFT JOIN sm_member b on a.user_id =b.uid
+    LEFT JOIN sm_doctor c on c.id= a.doctor_id
+    where a.user_id=#{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" resultType="cn.jingyiban.pojo.Emr" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sm_emr
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sm_emr
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jingyiban.pojo.Emr" >
+    insert into sm_emr (id, emr_level_id, user_id, 
+      user_img, user_content, user_time, 
+      doctor_id, doctor_content, doctor_time, 
+      doctor_img)
+    values (#{id,jdbcType=INTEGER}, #{emrLevelId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{userImg,jdbcType=VARCHAR}, #{userContent,jdbcType=VARCHAR}, #{userTime,jdbcType=TIMESTAMP}, 
+      #{doctorId,jdbcType=INTEGER}, #{doctorContent,jdbcType=VARCHAR}, #{doctorTime,jdbcType=TIMESTAMP}, 
+      #{doctorImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jingyiban.pojo.Emr" >
+    insert into sm_emr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="emrLevelId != null" >
+        emr_level_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userImg != null" >
+        user_img,
+      </if>
+      <if test="userContent != null" >
+        user_content,
+      </if>
+      <if test="userTime != null" >
+        user_time,
+      </if>
+      <if test="doctorId != null" >
+        doctor_id,
+      </if>
+      <if test="doctorContent != null" >
+        doctor_content,
+      </if>
+      <if test="doctorTime != null" >
+        doctor_time,
+      </if>
+      <if test="doctorImg != null" >
+        doctor_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="emrLevelId != null" >
+        #{emrLevelId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userImg != null" >
+        #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="userContent != null" >
+        #{userContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userTime != null" >
+        #{userTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doctorId != null" >
+        #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="doctorContent != null" >
+        #{doctorContent,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorTime != null" >
+        #{doctorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doctorImg != null" >
+        #{doctorImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jingyiban.pojo.Emr" >
+    update sm_emr
+    <set >
+      <if test="emrLevelId != null" >
+        emr_level_id = #{emrLevelId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userImg != null" >
+        user_img = #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="userContent != null" >
+        user_content = #{userContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userTime != null" >
+        user_time = #{userTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doctorId != null" >
+        doctor_id = #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="doctorContent != null" >
+        doctor_content = #{doctorContent,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorTime != null" >
+        doctor_time = #{doctorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doctorImg != null" >
+        doctor_img = #{doctorImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jingyiban.pojo.Emr" >
+    update sm_emr
+    set emr_level_id = #{emrLevelId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_img = #{userImg,jdbcType=VARCHAR},
+      user_content = #{userContent,jdbcType=VARCHAR},
+      user_time = #{userTime,jdbcType=TIMESTAMP},
+      doctor_id = #{doctorId,jdbcType=INTEGER},
+      doctor_content = #{doctorContent,jdbcType=VARCHAR},
+      doctor_time = #{doctorTime,jdbcType=TIMESTAMP},
+      doctor_img = #{doctorImg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

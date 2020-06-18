@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jingyiban.mapper.MemberMapper" >
+  <resultMap id="BaseResultMap" type="cn.jingyiban.pojo.Member" >
+    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="iphone" property="iphone" jdbcType="CHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uid, openid, name, iphone, url, gender, address, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sm_member
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+<!--检测是否有改用户-->
+  <select id="queryOpenidIsExit" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sm_member
+    where openid = #{openid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sm_member
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jingyiban.pojo.Member" >
+    insert into sm_member (uid, openid, name, 
+      iphone, url, gender, address, 
+      create_time, update_time)
+    values (#{uid,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{iphone,jdbcType=CHAR}, #{url,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jingyiban.pojo.Member" >
+    insert into sm_member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="iphone != null" >
+        iphone,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="iphone != null" >
+        #{iphone,jdbcType=CHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jingyiban.pojo.Member" >
+    update sm_member
+    <set >
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="iphone != null" >
+        iphone = #{iphone,jdbcType=CHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jingyiban.pojo.Member" >
+    update sm_member
+    set openid = #{openid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      iphone = #{iphone,jdbcType=CHAR},
+      url = #{url,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

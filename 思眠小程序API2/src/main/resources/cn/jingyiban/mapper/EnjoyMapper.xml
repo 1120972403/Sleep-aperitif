@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jingyiban.mapper.EnjoyMapper" >
+  <resultMap id="BaseResultMap" type="cn.jingyiban.pojo.Enjoy" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="view_num" property="viewNum" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.jingyiban.pojo.Enjoy" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    id, type, title, img, url, flag, admin_id, create_time, view_num
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+
+<!--根据类型查询-->
+  <select id="selectByType" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sm_enjoy
+    where type = #{type,jdbcType=INTEGER} ORDER BY view_num DESC
+  </select>
+
+
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sm_enjoy
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sm_enjoy
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jingyiban.pojo.Enjoy" >
+    insert into sm_enjoy (id, type, title, 
+      img, url, flag, admin_id, 
+      create_time, view_num, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{img,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, #{adminId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{viewNum,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jingyiban.pojo.Enjoy" >
+    insert into sm_enjoy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="adminId != null" >
+        admin_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="viewNum != null" >
+        view_num,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewNum != null" >
+        #{viewNum,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jingyiban.pojo.Enjoy" >
+    update sm_enjoy
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="adminId != null" >
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewNum != null" >
+        view_num = #{viewNum,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.jingyiban.pojo.Enjoy" >
+    update sm_enjoy
+    set type = #{type,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      view_num = #{viewNum,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jingyiban.pojo.Enjoy" >
+    update sm_enjoy
+    set type = #{type,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      view_num = #{viewNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

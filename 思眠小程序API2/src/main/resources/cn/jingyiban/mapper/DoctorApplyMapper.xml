@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jingyiban.mapper.DoctorApplyMapper" >
+  <resultMap id="BaseResultMap" type="cn.jingyiban.pojo.DoctorApply" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="doctor_id" property="doctorId" jdbcType="INTEGER" />
+    <result column="data" property="data" jdbcType="VARCHAR" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <!-- association ：配置一对一属性 -->
+    <!-- property:实体类中里面的 bank 属性名 -->
+    <!-- javaType:属性类型 -->
+    <association property="doctor" javaType="cn.jingyiban.pojo.Doctor" >
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="openid" property="openid" jdbcType="VARCHAR" />
+      <result column="name" property="name" jdbcType="VARCHAR" />
+      <result column="sex" property="sex" jdbcType="INTEGER" />
+      <result column="age" property="age" jdbcType="INTEGER" />
+      <result column="price" property="price" jdbcType="DECIMAL" />
+      <result column="phone" property="phone" jdbcType="CHAR" />
+      <result column="status" property="status" jdbcType="INTEGER" />
+      <result column="address" property="address" jdbcType="VARCHAR" />
+      <result column="admin_id" property="adminId" jdbcType="INTEGER" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, doctor_id, data, img, create_time
+  </sql>
+
+  <!--聚合查询医生申请列表-->
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+   SELECT * FROM sm_doctor_apply a,sm_doctor b where a.doctor_id=b.id
+  </select>
+
+  <select id="selectByPrimaryKey" resultType="cn.jingyiban.pojo.DoctorApply" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sm_doctor_apply
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sm_doctor_apply
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jingyiban.pojo.DoctorApply" >
+    insert into sm_doctor_apply (id, doctor_id, data, 
+      img, create_time)
+    values (#{id,jdbcType=INTEGER}, #{doctorId,jdbcType=INTEGER}, #{data,jdbcType=VARCHAR}, 
+      #{img,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jingyiban.pojo.DoctorApply" >
+    insert into sm_doctor_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="doctorId != null" >
+        doctor_id,
+      </if>
+      <if test="data != null" >
+        data,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="doctorId != null" >
+        #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="data != null" >
+        #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jingyiban.pojo.DoctorApply" >
+    update sm_doctor_apply
+    <set >
+      <if test="doctorId != null" >
+        doctor_id = #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="data != null" >
+        data = #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jingyiban.pojo.DoctorApply" >
+    update sm_doctor_apply
+    set doctor_id = #{doctorId,jdbcType=INTEGER},
+      data = #{data,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
